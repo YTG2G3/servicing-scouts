@@ -1,12 +1,18 @@
 import { NextSeo } from 'next-seo';
-import { Container, Navbar, Text } from '@nextui-org/react';
-import { signIn, useSession } from 'next-auth/react';
+import { Button, Container, Link, Navbar, Text } from '@nextui-org/react';
+import { signIn, signOut, useSession } from 'next-auth/react';
 import LoadingPage from '@/components/LoadingPage';
 import { useRouter } from 'next/router';
+import { useTheme } from 'next-themes';
+import Image from 'next/image';
+import styles from '@/styles/SEOPage.module.scss';
 
 export default function SEOPage({ title, description, children, authed, unauthed, ...props }: any) {
     let { status } = useSession();
     let router = useRouter();
+
+    let { setTheme } = useTheme();
+    setTheme('dark')
 
     // Impossible case
     if (authed && unauthed) return <></>;
@@ -33,11 +39,28 @@ export default function SEOPage({ title, description, children, authed, unauthed
             <Container {...props}>
                 <Navbar>
                     <Navbar.Brand>
-                        <Text b>Servicing Scouts</Text>
+                        <Link href='#'>
+                            <Image className={styles.logo} width="50" height="50" src="/logo-bg.png" />
+                            <Text b onClick={() => router.push("/")}>Servicing Scouts</Text>
+                        </Link>
                     </Navbar.Brand>
 
+                    {status === "authenticated" ? (
+                        <Navbar.Content>
+                            <Navbar.Link href=''>Events</Navbar.Link>
+                        </Navbar.Content>
+                    ) : undefined}
+
                     <Navbar.Content>
-                        <Navbar.Link></Navbar.Link>
+                        {status === "authenticated" ? (
+                            <Navbar.Item>
+                                <Button auto flat onClick={() => signOut}>Sign Out</Button>
+                            </Navbar.Item>
+                        ) : (
+                            <Navbar.Item>
+                                <Button auto flat onClick={() => signIn("google")}>Log In</Button>
+                            </Navbar.Item>
+                        )}
                     </Navbar.Content>
                 </Navbar>
 
