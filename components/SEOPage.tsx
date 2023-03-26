@@ -40,7 +40,7 @@ export default function SEOPage({ title, description, children, authed, unauthed
                 <Navbar>
                     <Navbar.Brand>
                         <Link href='#'>
-                            <Image className={styles.logo} width="50" height="50" src="/logo-bg.png" />
+                            <Image className={styles.logo} width="50" height="50" src="/logo-bg.png" alt='N/A' />
                             <Text b onClick={() => router.push("/")}>Servicing Scouts</Text>
                         </Link>
                     </Navbar.Brand>
