@@ -1,18 +1,13 @@
 import SEOPage from "@/components/SEOPage";
 import { Card, Col, Grid, Row, Text } from "@nextui-org/react";
 import styles from '@/styles/Home.module.scss';
+import SlideShow from "@/components/SlideShow";
 
 export default function Home() {
+
     return (
         <SEOPage title="Home" description="Online management system for scouts.">
-            <Grid.Container justify="center" className={styles.jumbo}>
-                <Grid xs={12} sm={6} alignItems="center">
-                    <Col className={styles.col}>
-                        <Text className={styles.jtext}>Servicing Scouts</Text>
-                        <Text className={styles.btext}>Manage scout events virtually. Powered by Algorix.</Text>
-                    </Col>
-                </Grid>
-            </Grid.Container>
+            <SlideShow />
 
             <Grid.Container gap={6}>
                 <Grid xs={12} sm={4}>

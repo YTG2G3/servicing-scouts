@@ -3,16 +3,12 @@ import { Button, Container, Link, Navbar, Text } from '@nextui-org/react';
 import { signIn, signOut, useSession } from 'next-auth/react';
 import LoadingPage from '@/components/LoadingPage';
 import { useRouter } from 'next/router';
-import { useTheme } from 'next-themes';
 import Image from 'next/image';
 import styles from '@/styles/SEOPage.module.scss';
 
 export default function SEOPage({ title, description, children, authed, unauthed, ...props }: any) {
-    let { status } = useSession();
+    let { data: session, status } = useSession();
     let router = useRouter();
-
-    let { setTheme } = useTheme();
-    setTheme('dark')
 
     // Impossible case
     if (authed && unauthed) return <></>;
@@ -47,7 +43,9 @@ export default function SEOPage({ title, description, children, authed, unauthed
 
                     {status === "authenticated" ? (
                         <Navbar.Content>
-                            <Navbar.Link href=''>Events</Navbar.Link>
+                            <Navbar.Link href='/events'>Events</Navbar.Link>
+                            <Navbar.Link href='/calendar'>Calendar</Navbar.Link>
+                            <Navbar.Link href='/profile'>Profile</Navbar.Link>
                         </Navbar.Content>
                     ) : undefined}
 
