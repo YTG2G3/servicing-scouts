@@ -1,5 +1,5 @@
 import { NextSeo } from 'next-seo';
-import { Button, Container, Link, Navbar, Text } from '@nextui-org/react';
+import { Button, Container, Divider, Grid, Link, Navbar, Row, Spacer, Text } from '@nextui-org/react';
 import { signIn, signOut, useSession } from 'next-auth/react';
 import LoadingPage from '@/components/LoadingPage';
 import { useRouter } from 'next/router';
@@ -34,22 +34,27 @@ export default function SEOPage({ title, description, children, authed, unauthed
 
             <Container {...props}>
                 <Navbar>
-                    <Navbar.Brand>
-                        <Link href='#'>
+                    <Navbar.Brand style={{ width: 200 }}>
+                        <Link href='/'>
                             <Image className={styles.logo} width="50" height="50" src="/logo-bg.png" alt='N/A' />
                             <Text b onClick={() => router.push("/")}>Servicing Scouts</Text>
                         </Link>
                     </Navbar.Brand>
 
-                    {status === "authenticated" ? (
-                        <Navbar.Content>
-                            <Navbar.Link href='/events'>Events</Navbar.Link>
-                            <Navbar.Link href='/calendar'>Calendar</Navbar.Link>
-                            <Navbar.Link href='/profile'>Profile</Navbar.Link>
-                        </Navbar.Content>
-                    ) : undefined}
-
                     <Navbar.Content>
+                        <Navbar.Link href='/about-us'>About Us</Navbar.Link>
+                        <Navbar.Link href='/our-staffs'>Our Staffs</Navbar.Link>
+
+                        {status === "authenticated" ? (
+                            <>
+                                <Navbar.Link href='/events'>Events</Navbar.Link>
+                                <Navbar.Link href='/calendar'>Calendar</Navbar.Link>
+                                <Navbar.Link href='/profile'>Profile</Navbar.Link>
+                            </>
+                        ) : undefined}
+                    </Navbar.Content>
+
+                    <Navbar.Content style={{ width: 200, justifyContent: "flex-end" }}>
                         {status === "authenticated" ? (
                             <Navbar.Item>
                                 <Button auto flat onClick={() => signOut}>Sign Out</Button>
@@ -63,6 +68,14 @@ export default function SEOPage({ title, description, children, authed, unauthed
                 </Navbar>
 
                 {children}
+
+                <Divider />
+
+                <footer className={styles.footer}>
+                    <Text className={styles.txt}>Contact <a href='mailto:henryk@algorix.io'>henryk@algorix.io</a> for issues</Text>
+                    <Text className={styles.txt}>Servicing Scouts</Text>
+                    <Text className={styles.txt}>© Copyright {new Date().getFullYear()} Algorix Corp.</Text>
+                </footer>
             </Container>
         </>
     );

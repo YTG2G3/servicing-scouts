@@ -1,4 +1,4 @@
-import { Col, Grid, Image, Text } from "@nextui-org/react";
+import { Col, Grid, Text } from "@nextui-org/react";
 import Autoplay from "embla-carousel-autoplay";
 import useEmblaCarousel from 'embla-carousel-react';
 import styles from '@/styles/SlideShow.module.scss';
@@ -13,14 +13,11 @@ export default function SlideShow() {
         "https://littlevisuals.co/images/Njoror.jpg"
     ];
 
-    // TODO - maybe cut image?
     // TODO - maybe shadow underneath text?
     return (
         <Grid.Container justify="center" className={styles.embla} ref={emblaRef}>
             <div className={styles.embla__container}>{imgs.map((v, i) =>
-                <div key={i} className={styles.embla__slide}>
-                    <Image src={v} placeholder="blur" alt="Loading" />
-                </div>
+                <div key={i} className={styles.embla__slide} style={{ background: `url(${v}) no-repeat center center fixed`, backgroundSize: "cover" }} />
             )}</div>
 
             <Grid alignItems="center" className={styles.hover} xs={12} sm={6}>
