@@ -1,5 +1,5 @@
 import { NextSeo } from 'next-seo';
-import { Button, Container, Divider, Grid, Link, Navbar, Row, Spacer, Text } from '@nextui-org/react';
+import { Button, Container, Divider, Link, Navbar, Text } from '@nextui-org/react';
 import { signIn, signOut, useSession } from 'next-auth/react';
 import LoadingPage from '@/components/LoadingPage';
 import { useRouter } from 'next/router';
