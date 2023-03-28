@@ -1,7 +1,7 @@
 import { Button, Card, Col, Grid, Row, Text } from "@nextui-org/react";
 import styles from '@/styles/InfoCard.module.scss';
 
-export default function InfoCard({ img, label, title, description, btntxt, btnevent }) {
+export default function InfoCard({ img, label, title, description, btntxt, btnevent }: any) {
     return (
         <Grid xs={12} sm={4}>
             <Card isHoverable>
