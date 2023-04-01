@@ -9,7 +9,7 @@ export default function Home() {
     let { status } = useSession();
     let router = useRouter();
 
-    // TODO - Get text from server and cut off ...
+    // TODO - Get text from server as SSR and cut off ...
     return (
         <SEOPage title="Home" description="Online management system for scouts.">
             <SlideShow />

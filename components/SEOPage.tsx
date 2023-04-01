@@ -7,7 +7,7 @@ import Image from 'next/image';
 import styles from '@/styles/SEOPage.module.scss';
 
 export default function SEOPage({ title, description, children, authed, unauthed, ...props }: any) {
-    let { data: session, status } = useSession();
+    let { status } = useSession();
     let router = useRouter();
 
     // Impossible case
@@ -69,7 +69,7 @@ export default function SEOPage({ title, description, children, authed, unauthed
 
                 {children}
 
-                <Divider />
+                <Divider className={styles.div} />
 
                 <footer className={styles.footer}>
                     <Text className={styles.txt}>Contact <a href='mailto:henryk@algorix.io'>henryk@algorix.io</a> for issues</Text>
