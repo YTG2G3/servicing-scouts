@@ -23,7 +23,7 @@ export default function SlideShow() {
             <Grid alignItems="center" className={styles.hover} xs={12} sm={6}>
                 <Col>
                     <Text className={styles.jtext}>Servicing Scouts</Text>
-                    <Text className={styles.btext}>Manage scout events virtually. Powered by Algorix.</Text>
+                    <Text className={styles.btext}>Manage scout events virtually. Powered by Algorix</Text>
                 </Col>
             </Grid>
         </Grid.Container>
